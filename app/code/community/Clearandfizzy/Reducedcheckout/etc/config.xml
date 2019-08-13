@@ -78,15 +78,6 @@
         </helpers>               
         
 		<events>
-			<customer_register_success>
-                <observers>
-                    <checkCustomerCreated>
-                        <class>Clearandfizzy_Reducedcheckout_Model_Observer_Signup</class>
-                        <method>checkCustomerCreated</method>
-                    </checkCustomerCreated>
-                </observers>
-			
-			</customer_register_success>
 
             <controller_action_layout_load_before>
                 <observers>
