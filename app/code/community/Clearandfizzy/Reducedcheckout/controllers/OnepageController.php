@@ -272,15 +272,34 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 	 */
 	public function progressAction()
 	{
+		$version_array = Mage::getVersionInfo();
+		
+		//	Quick fix Magento 1.8 and pre 1.8 have different methods to generate the right hand progress bar.
+		if ( $version_array['major'] == 1 && $version_array['minor'] < 8 ) {
+			return $this->preV8ProgressAction();
+		} // end 
+		
+		return parent::progressAction();
+	} // end 
+	
+	
+	/**
+	 * Quick fix Magento 1.8 and pre 1.8 have different methods to generate the right hand progress bar.
+	 * This method runs if magento 1.7 or older is being used.
+	 * @return string
+	 */
+	protected function preV8ProgressAction() {
 		$layout = $this->getLayout();
 		$update = $layout->getUpdate();
 		$update->load('checkout_onepage_progress');
 		$layout->generateXml();
 		$layout->generateBlocks();
 		$output = $layout->getOutput();
+		
 		$this->renderLayout();
-	}
-
+		
+	} // end 
+	
 	/**
 	 * Returns html for the next step to display depending on logic set in the System > Configuration
 	 * 
