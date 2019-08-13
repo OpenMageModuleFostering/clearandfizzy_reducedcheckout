@@ -20,6 +20,19 @@
              <clearandfizzy_reducedcheckout>
                 <class>Clearandfizzy_Reducedcheckout_Model</class>
              </clearandfizzy_reducedcheckout>
+             
+             <shipping_resource>
+             	<rewrite>
+
+             		
+             		<carrier_tablerate>Clearandfizzy_ReducedCheckout_Model_Resource_Carrier_TablerateFix</carrier_tablerate>
+             		
+
+             		
+             	</rewrite>
+             </shipping_resource>
+             
+             
         </models>   
 
         <helpers>

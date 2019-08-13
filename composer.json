@@ -1,7 +1,7 @@
 {
     "name": "OpenMageModuleFostering/Clearandfizzy_Reducedcheckout",
     "type": "magento-module",
-    "license": "AFL-3.0",
+    "license": "CC-BY-ND-3.0",
     "homepage": "",
     "description": "The standard Magento checkout process but allows you to force payment and shipping methods. ",
     "authors": [

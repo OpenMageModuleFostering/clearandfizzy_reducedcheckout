@@ -12,12 +12,15 @@ class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstrac
 		return $value;
 	} // end
 
-
 	public function isGuestCheckoutOnly() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/guestcheckoutonly');
 		return $value;
 	} // end
 
+	public function isFix28112Enabled() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/enable28112fix');
+		return $value;
+	} // end
 
 	public function getCustomerGroupsEnabled() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/customergroups_enabled');
@@ -47,8 +50,6 @@ class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstrac
 
 		return $value;
 	} // end
-
-
 
 	/**
 	 * Returns the current logged in customers group.

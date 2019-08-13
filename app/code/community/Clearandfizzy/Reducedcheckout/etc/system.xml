@@ -54,6 +54,7 @@
 							<li>Allows forced Guest Registration.</li>
 							<li>Allows forced Payment method.</li>
 							<li>Allows forced Shipping method.</li>
+							<li>Fix for Magento Shipping Tablerates in 1.7.0.2 <a target="_blank" href="http://www.magentocommerce.com/bug-tracking/issue?issue=14069">http://www.magentocommerce.com/bug-tracking/issue?issue=14069</a></li>
 							<li>Allows you to setup rules based on Customer groups.</li>
 							<li><a target="_blank" href="http://www.magentocommerce.com/magento-connect/clearandfizzy-reduced-one-step-checkout-6893.html">http://www.magentocommerce.com/magento-connect/clearandfizzy-reduced-one-step-checkout-6893.html</a>
 						</ol> ]]></comment>				
@@ -80,6 +81,17 @@
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
 					        </isenabled>
+					        
+							<enable28112fix>
+								<label>Enable Shipping Tablerates Bug #28112 fix</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+					            <comment>Enable fix for Magento bug #28112 Shipping tablerates</comment>
+					            <sort_order>1</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </enable28112fix>	        
 
 					        <guestcheckoutonly>
 								<label>Force guest checkout only</label>
