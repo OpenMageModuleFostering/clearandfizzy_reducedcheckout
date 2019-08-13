@@ -16,3 +16,7 @@ margin: 1em 0 0;
 padding: 8px 0 0;
 }
 
+#clearandfizzy_reducedcheckout_login .form-list input.input-text {
+	margin-left: 25px;
+}
+

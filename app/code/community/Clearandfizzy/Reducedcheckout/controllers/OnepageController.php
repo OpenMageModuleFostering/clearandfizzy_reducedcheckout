@@ -31,7 +31,7 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 	private function getCheckoutMethod() {
 
-		switch ( $this->_helper->isGuestCheckoutOnly() ) {
+		switch ( $this->_helper->isLoginStepGuestOnly() ) {
 
 			case true:
 				$method = "guest";
@@ -166,7 +166,7 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 		if ($this->getRequest()->isPost()) {
 
-			if ( $this->_helper->isGuestCheckoutOnly() == true) {
+			if ( $this->_helper->isLoginStepGuestOnly() == true) {
 				// set the checkout method
 				$this->saveMethodAction();
 			} // end if

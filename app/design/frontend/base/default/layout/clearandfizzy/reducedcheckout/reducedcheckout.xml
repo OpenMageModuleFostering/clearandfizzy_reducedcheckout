@@ -6,6 +6,13 @@
 			<block type="checkout/onepage" name="checkout.onepage.reduced.setup" template="clearandfizzy/reducedcheckout/onepage.phtml" />
 		</reference>	
 	</clearandfizzy_checkout_reduced>	
+	
+	<clearandfizzy_checkout_reduced_login_custom>
+		<reference name="checkout.onepage.login">
+			<action method="setTemplate"><template>clearandfizzy/reducedcheckout/onepage/login.phtml</template> </action>	
+		</reference>
+	</clearandfizzy_checkout_reduced_login_custom>
+	
 
 	<clearandfizzy_checkout_reduced_forceguestonly> 
 

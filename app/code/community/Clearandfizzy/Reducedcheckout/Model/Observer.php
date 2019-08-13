@@ -22,10 +22,17 @@ class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Obser
 			// should we remove the login step..
 			if (
 				Mage::getSingleton('customer/session')->isLoggedIn() == false && 
-				Mage::helper('clearandfizzy_reducedcheckout/data')->isGuestCheckoutOnly() == true) {
-				$update->addHandle('clearandfizzy_checkout_reduced_forceguestonly');
+				Mage::helper('clearandfizzy_reducedcheckout/data')->isLoginStepGuestOnly() == true) {
+					$update->addHandle('clearandfizzy_checkout_reduced_forceguestonly');
 			} // end
 
+			// should we remove the login step..
+			if (
+				Mage::getSingleton('customer/session')->isLoggedIn() == false &&
+				Mage::helper('clearandfizzy_reducedcheckout/data')->isLoginStepCustom() == true) {
+					$update->addHandle('clearandfizzy_checkout_reduced_login_custom');
+			} // end			
+			
 			// should we remove the payment method step..
 			if (Mage::helper('clearandfizzy_reducedcheckout/data')->skipShippingMethod() == true) {
 				$update->addHandle('clearandfizzy_checkout_reduced_skip_shippingmethod');
@@ -44,7 +51,7 @@ class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Obser
 			
 			$update = $observer->getEvent()->getLayout()->getUpdate();
 			$update->addHandle('clearandfizzy_checkout_reduced');
-			
+
 			// enable register on order success..
 			// only change the handle 
 			if ( $this->_isValidGuest() && Mage::helper('clearandfizzy_reducedcheckout/data')->guestsCanRegisterOnOrderSuccess() == true) {

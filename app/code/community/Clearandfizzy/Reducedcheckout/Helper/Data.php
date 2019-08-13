@@ -2,6 +2,10 @@
 
 class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstract {
 
+	const LOGIN_STEP_DEFAULT 	= 0;
+	const LOGIN_STEP_GUESTONLY 	= 1;
+	const LOGIN_STEP_CUSTOM 	= 2;
+	
 	public function getPaymentMethod() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/default_payment');
 		return $value;
@@ -12,32 +16,43 @@ class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstrac
 		return $value;
 	} // end
 
-	public function isGuestCheckoutOnly() {
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/guestcheckoutonly');
+	public function isLoginStepDefault() {
+		return ( $this->getLoginStepType() == self::LOGIN_STEP_DEFAULT);
+	} // end
+	
+	public function isLoginStepGuestOnly() {
+		return ( $this->getLoginStepType() == self::LOGIN_STEP_GUESTONLY);
+	} // end
+	
+	public function isLoginStepCustom() {
+		return ( $this->getLoginStepType() == self::LOGIN_STEP_CUSTOM);
+	} // end 
+	
+	protected function getLoginStepType() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/loginstep_type');
+		return $value;
+	} // end	
+	
+	public function isFix28112Enabled() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/enable28112fix');
 		return $value;
 	} // end
 
-	public function isFix28112Enabled() {
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/enable28112fix');
+	public function guestsCanRegisterOnOrderSuccess() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/register_on_order_success');
+		return $value;
+	} // end
+	
+	public function getCMSBlockIdForOrderSuccessForm() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/register_on_order_success_cms_block');
 		return $value;
 	} // end
 	
 	public function getCustomerGroupsEnabled() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/customergroups_enabled');
 		return $value;
-	}
-
-	public function guestsCanRegisterOnOrderSuccess() {
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_order_success/register_on_order_success');
-		return $value;
-	} // end
-	
-	public function getCMSBlockIdForOrderSuccessForm() {
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_order_success/register_on_order_success_cms_block');
-		return $value;
-	} // end
-	
-	
+	} // end 
+		
 	public function getShippingCustomerGroups() {
 
 		if ($this->getCustomerGroupsEnabled() == 0) {

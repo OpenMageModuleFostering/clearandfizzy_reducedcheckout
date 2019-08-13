@@ -76,33 +76,22 @@
 								<frontend_type>select</frontend_type>
 								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
 					            <comment>Enable reduced checkout functionality</comment>
-					            <sort_order>1</sort_order>
+					            <sort_order>10</sort_order>
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
 					        </isenabled>
 					        
-							<enable28112fix>
-								<label>Enable Shipping Tablerates Bug #28112 fix</label>
+					        <loginstep_type>
+								<label>Login Step</label>
 								<frontend_type>select</frontend_type>
-								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-					            <comment>Enable fix for Magento bug #28112 Shipping tablerates</comment>
-					            <sort_order>1</sort_order>
+					            <source_model>clearandfizzy_reducedcheckout/system_config_source_login_step</source_model>
+					            <comment>Select the look of of the login step of the checkout process</comment>
+					            <sort_order>20</sort_order>
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
-					        </enable28112fix>	        
-
-					        <guestcheckoutonly>
-								<label>Force guest checkout only</label>
-								<frontend_type>select</frontend_type>
-								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-					            <comment>If guest checkout isn't forced the standard magento login/register step is displayed.</comment>
-					            <sort_order>1</sort_order>
-					            <show_in_default>1</show_in_default>
-					            <show_in_website>1</show_in_website>
-					            <show_in_store>1</show_in_store>                    
-					        </guestcheckoutonly>
+					        </loginstep_type>					        
 	
 							<!-- todo: Gp - make this into a drop down menu -->
 					        <default_shipping>
@@ -110,7 +99,7 @@
 					            <frontend_type>select</frontend_type>
 					            <source_model>clearandfizzy_reducedcheckout/system_config_source_shipping_enabledMethods</source_model>
 					            <comment>The code for the default shipping method</comment>
-					            <sort_order>2</sort_order>
+					            <sort_order>30</sort_order>
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
@@ -122,56 +111,49 @@
 					            <frontend_type>select</frontend_type>
 					            <source_model>clearandfizzy_reducedcheckout/system_config_source_payment_enabledMethods</source_model>
 					            <comment>The code for the default payment method</comment>
-					            <sort_order>3</sort_order>
+					            <sort_order>40</sort_order>
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
 					        </default_payment>		
+
+							<register_on_order_success>
+								<label>Enable "Register now" Form on Order Success page</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+					            <comment>Displays a form encouraging guest users to register</comment>
+					            <sort_order>50</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </register_on_order_success>	
 					        
-					        					        		        
-				        
+							<register_on_order_success_cms_block>
+								<label>CMS Static Block</label>
+	   	                        <frontend_type>select</frontend_type>
+	                            <source_model>clearandfizzy_reducedcheckout/system_config_source_cms_block</source_model>
+	                           	<comment></comment>
+	                           	<depends><register_on_order_success>1</register_on_order_success></depends>
+					            <sort_order>60</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </register_on_order_success_cms_block>	
+
+							<enable28112fix>
+								<label>Enable Shipping Tablerates Bug #28112 fix</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+					            <comment>Enable fix for Magento bug #28112 Shipping tablerates</comment>
+					            <sort_order>70</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </enable28112fix>	        
+
 				    </fields>    
 				</reducedcheckout>
 				
-				<reducedcheckout_order_success>
-					<label>Reduced Checkout Order Success page Settings </label>
-                    <sort_order>30</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>   
-					<expanded>1</expanded>
-					<comment><![CDATA[ <ol>
-						
-					</ol> ]]></comment>		
-	
-					<fields>
-					
-						<register_on_order_success>
-							<label>Enable "Register now" Form on Order Success page</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <comment>Displays a form encouraging guest users to register</comment>
-				            <sort_order>4</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </register_on_order_success>	
-				        
-						<register_on_order_success_cms_block>
-							<label>CMS Static Block</label>
-   	                        <frontend_type>select</frontend_type>
-                            <source_model>clearandfizzy_reducedcheckout/system_config_source_cms_block</source_model>
-                           	<comment></comment>
-                           	<depends><register_on_order_success>1</register_on_order_success></depends>
-				            <sort_order>5</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </register_on_order_success_cms_block>	
-					</fields>
-					
-				</reducedcheckout_order_success>	
-	
 				<reducedcheckout_customergroups>
 					<label>Reduced Checkout Customer Group Settings </label>
                     <sort_order>40</sort_order>

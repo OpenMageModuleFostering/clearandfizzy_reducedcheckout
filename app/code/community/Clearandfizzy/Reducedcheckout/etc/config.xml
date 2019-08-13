@@ -102,7 +102,7 @@
 			<reducedcheckout>
 				<isenabled>0</isenabled>		
 				<enable28112fix>0</enable28112fix>
-				<guestcheckoutonly>0</guestcheckoutonly>		
+				<loginstep_type>0</loginstep_type>		
 				<default_shipping>noskip</default_shipping>		
 				<default_payment>noskip</default_payment>
 				

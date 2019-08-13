@@ -27,7 +27,7 @@
 <?php
 	// this is to enable forced guest checkout
 	if (Mage::getSingleton('customer/session')->isLoggedIn() == false && 
-		$this->helper('clearandfizzy_reducedcheckout/data')->isGuestCheckoutOnly() == true 
+		$this->helper('clearandfizzy_reducedcheckout/data')->isLoginStepGuestOnly() == true 
 		) {
 ?>
 		Element.hide('register-customer-password');
