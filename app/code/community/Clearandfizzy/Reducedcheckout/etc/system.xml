@@ -5,30 +5,16 @@
  *
  * NOTICE OF LICENSE
  *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
  *
- * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
- * COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY
- * COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
- * AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
-
- * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE
- * TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY
- * BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
- * CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
- * CONDITIONS.
- *
- * DISCLAIMER
- *
- * Do not edit or add to this file if you wish to upgrade this extension to newer
- * versions in the future. If you wish to customize this extension for your
- * needs please refer to http://www.clearandfizzy.com for more information.
- *
- * @category    Community
+ * @category    Clearandfizzy
  * @package     Clearandfizzy_Reducedcheckout
- * @copyright   Copyright (c) 2015 Clearandfizzy ltd. (http://www.clearandfizzy.com)
- * @license     http://www.clearandfizzy.com/license.txt
- * @author		Gareth Price <gareth@clearandfizzy.com>
- * 
+ * @copyright   Copyright (c) 2012 Clearandfizzy ltd. (http://www.clearandfizzy.com/)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ * @description This file configures the Clearandfizzy tab and any default menus in the magento admin
  */
 -->
 <config>
@@ -41,6 +27,7 @@
         </clearandfizzy>
     </tabs>  
     
+ 
 	<!-- Group appears as a heading on the right hand side of the screen -->
     <sections>
         <clearandfizzy_reducedcheckout_settings>
@@ -53,444 +40,82 @@
 	        <show_in_website>1</show_in_website>
 	        <show_in_store>1</show_in_store>   
  
-           	<groups>
-				<reducedcheckout_about>
-					<label>Reduced Checkout</label>
-					<frontend_type>text</frontend_type>
-					<sort_order>10</sort_order>
-					<show_in_default>1</show_in_default>
-					<show_in_website>1</show_in_website>
-					<show_in_store>1</show_in_store>
-					<comment><![CDATA[ <ol>
-						<li><h3>About</h3></li>
-						<li>Quickly checkout without changing the Magento checkout workflow </li>
-						<li>Allows forced Guest Registration.</li>
-						<li>Allows forced Shipping method.</li>
-						<li>Allows forced Payment method.</li>
-						<li>Fix for Magento Shipping Tablerates in 1.7.0.2 <a target="_blank" href="http://www.magentocommerce.com/bug-tracking/issue?issue=14069">http://www.magentocommerce.com/bug-tracking/issue?issue=14069</a></li>
-						<li>Allows you to setup rules based on Customer groups.</li>
-						<li>Focus Checkout mode, configure the checkout page to have reduced clutter.</li>
-                        <li>For support and buckets more features <a target="_blank" style="color: blue;" href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li>
-						<li>&nbsp;</li>
-						<li><h3>Paypal</h3></li>
-						<li><a target="_blank" style="color: blue;" href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a> for Paypal payment methods.</li>
-						<li>&nbsp;</li>
-						<li><h3>FAQ</h3></li>
-						<li>There is a FAQ list at the bottom of the extension page on Magento Connect <a target="_blank" style="color: blue;" href="http://www.magentocommerce.com/magento-connect/reduced-checkout-free.html">http://www.magentocommerce.com/magento-connect/reduced-checkout-free.html</a></li>						
-						<li>&nbsp;</li>
-						<li><h3>Systems Check</h3></li>
-						<li>Web &gt; Secure &gt; Base URL: <strong id="is-enabled"></span></strong>
-						<li>Web &gt; Secure &gt; Use Secure URLs in Frontend: <strong id="is-secure"></span></strong>
-						<li>&nbsp;</li>
-						<script>
-			            var request_enabled =	new Ajax.Request('/admin/reducedcheckout/issecureenabled', {
-			                parameters: {isAjax: 1, method: 'POST'},
-			                onLoading: function(){$('is-enabled').show();},
-			                onSuccess: function(transport) {
-			                    $('is-enabled').innerHTML = transport.responseText;
-			                }
-			            });
+	           	<groups>
+					<reducedcheckout_about>
+						<label>Reduced Checkout</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<comment><![CDATA[ <ol>
+							<li>Quick checkout method without changing the Magento checkout workflow </li>
+							<li>Allows forced Guest Registration.</li>
+							<li>Allows forced Payment method.</li>
+							<li>Allows forced Shipping method.</li>
+						</ol> ]]></comment>				
+						<expanded>1</expanded>							
+					</reducedcheckout_about>
+					
+					<reducedcheckout>
+						<label>Reduced Checkout Settings </label>
+	                    <frontend_type>text</frontend_type>
+	                    <sort_order>20</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>   
+						<expanded>1</expanded>
 
-			            var request_secureurl =	new Ajax.Request('/admin/reducedcheckout/isfrontendssl', {
-			                parameters: {isAjax: 1, method: 'POST'},
-			                onLoading: function(){$('is-secure').show();},
-			                onSuccess: function(transport) {
-			                    $('is-secure').innerHTML = transport.responseText;
-			                }
-			            });
+						<fields>
+					        <isenabled>
+								<label>Enable Reduced Checkout</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+					            <comment>Enable reduced checkout functionality</comment>
+					            <sort_order>1</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </isenabled>
 
-
-						</script>
-
-					</ol> ]]></comment>				
-					<expanded>1</expanded>							
-				</reducedcheckout_about>
-				
-				<reducedcheckout>
-					<label>Reduced Checkout Settings </label>
-                    <frontend_type>text</frontend_type>
-                    <sort_order>20</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>   
-					<expanded>1</expanded>
-
-					<fields>
-				        <isenabled>
-							<label>Enable Reduced Checkout</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <comment>Enable reduced checkout functionality</comment>
-				            <sort_order>10</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </isenabled>
-				        
-				        <loginstep_type>
-							<label>Login Step</label>
-							<frontend_type>select</frontend_type>
-				            <source_model>clearandfizzy_reducedcheckout/system_config_source_login_step</source_model>
-				            <comment>
-				            <![CDATA[
-				            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-				            Select the look of of the login step of the checkout process.
-				            
-				            <script>
-				            	$$('select#clearandfizzy_reducedcheckout_settings_reducedcheckout_loginstep_type option').each(function(o) {
-									if(o.readAttribute('value') == '2') { 
-										o.disabled = true;
-		  							} // end if
-								});
-							</script>
-				            
-				            ]]>
-				            </comment>
-				            <sort_order>20</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </loginstep_type>					        
-
-						<hide_telephone_fax>
-							<label>Hide Telephone and Fax</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <comment>Removes Telephone and Fax from Billing &amp; Shipping steps, hides &amp; defaults these required fields to 00</comment>
-				            <sort_order>21</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </hide_telephone_fax>	  					        					        					        		        
-
-						<!-- todo: Gp - make this into a drop down menu -->
-				        <default_shipping>
-				            <label>Shipping Method Step</label>
-				            <frontend_type>select</frontend_type>
-				            <source_model>clearandfizzy_reducedcheckout/system_config_source_shipping_enabledmethods</source_model>
-				            <comment>The code for the default shipping method</comment>
-				            <sort_order>30</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </default_shipping>
-			        
-			        	<default_payment>
+					        <guestcheckoutonly>
+								<label>Force guest checkout only</label>
+								<frontend_type>select</frontend_type>
+								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+					            <comment>If guest checkout isn't forced the standard magento login/register step is displayed.</comment>
+					            <sort_order>1</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </guestcheckoutonly>
+	
 							<!-- todo: Gp - make this into a drop down menu -->
-				            <label>Payment Method Step</label>
-				            <frontend_type>select</frontend_type>
-				            <source_model>clearandfizzy_reducedcheckout/system_config_source_payment_enabledmethods</source_model>
-				            <comment>The code for the default payment method</comment>
-				            <sort_order>40</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </default_payment>		
-
-						<register_on_order_success>
-							<label>Order Success page - Guest to Customer Converter</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>
-				            <comment>
-				               <![CDATA[<a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a><br />
-				            Enable "Register now" Form on Order Success page - Displays a form encouraging guest users to register. 
-
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_register_on_order_success');
-							</script>
-				               ]]>
-				            </comment>
-				            <sort_order>50</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </register_on_order_success>	
-				       
-				       	<enable28112fix>
-							<label>Enable Shipping Tablerates Bug #28112 fix</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <comment>Enable fix for Magento bug #28112 Shipping tablerates</comment>
-				            <sort_order>70</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </enable28112fix>	        
-
+					        <default_shipping>
+					            <label>Default Shipping Method</label>
+					            <frontend_type>select</frontend_type>
+					            <source_model>clearandfizzy_reducedcheckout/system_config_source_shipping_enabledMethods</source_model>
+					            <comment>The code for the default shipping method</comment>
+					            <sort_order>2</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </default_shipping>
+				        
+				        	<default_payment>
+								<!-- todo: Gp - make this into a drop down menu -->
+					            <label>Default Payment Method</label>
+					            <frontend_type>select</frontend_type>
+					            <source_model>clearandfizzy_reducedcheckout/system_config_source_payment_enabledMethods</source_model>
+					            <comment>The code for the default payment method</comment>
+					            <sort_order>3</sort_order>
+					            <show_in_default>1</show_in_default>
+					            <show_in_website>1</show_in_website>
+					            <show_in_store>1</show_in_store>                    
+					        </default_payment>				        
+				        
 				    </fields>    
-				</reducedcheckout>
-				
-				<reducedcheckout_focus>
-					<label>Focus Checkout Settings </label>
-                    <sort_order>30</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>   
-					<expanded>1</expanded>
-					<comment><![CDATA[ <ol>
-						<li><h3>Focus Checkout Settings</h3></li>
-						<li>Streamline the checkout process further by removing as many outbound links / checkout distractions as possible.</li>
-                        <li>&nbsp;</li>
-						<li><b>PLEASE NOTE:</b> These settings will work in the majority of cases however be aware that customised themes may not adhere to best practice guidelines.  For support and buckets more features <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li>
 	
-					</ol> ]]></comment>		
-					
-					<fields>
-				        <tidy_header>
-							<label>Clear the Header block of links</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>10</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>     
-				            <comment>
-					            <![CDATA[
-					            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-					            Removed all child blocks from within the "Header" Block.
-					            
-								<script>
-									Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_focus_tidy_header');
-								</script>
-					            
-					            ]]>
-				            </comment>               
-				        </tidy_header>
-				        
-				        <onecolumn>
-							<label>Enabled One Column Layout</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>20</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>  
-				            <comment>
-					            <![CDATA[
-					            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-					            Put the Checkout into a One Column Layout removing any links on the left and right columns.
-					            
-								<script>
-									Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_focus_onecolumn');
-								</script>
-					            
-					            ]]>
-				            </comment>               
-
-				        </onecolumn>	
-				        
-				        <hide_edityourcart>
-							<label>Hide "Edit Your Cart" on checkout</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>30</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store> 
-				            <comment>
-					            <![CDATA[
-					            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-					            Hides the "Edit Your Cart" link on the final step of the checkout process - forcusing the user on proceeding onto completing the order.
-					            
-								<script>
-									Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_focus_hide_edityourcart');
-								</script>
-					            
-					            ]]>
-				            </comment>               
-				        </hide_edityourcart>	
-				
-					</fields>
-				</reducedcheckout_focus>
-				
-				<reducedcheckout_cart>
-					<label>Cart Settings</label>
-                    <sort_order>40</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>   
-					<expanded>1</expanded>
-					<comment><![CDATA[ <ol>
-						<li><h3>Focus Cart Settings</h3></li>
-						<li>Streamline the shopping cart by removing checkout distractions.</li>
-                        <li>&nbsp;</li>
-						<li><b>PLEASE NOTE:</b> These settings will work in the majority of cases however be aware that customised themes may not adhere to best practice guidelines.  For support and buckets more features <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li>
-					</ol> ]]></comment>		
-					
-					<fields>
-				        <hide_emptycart>
-							<label>Hide Empty-Cart Button</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>1</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>     
-				            <comment>
-					            <![CDATA[
-					            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-					            Remove the "Empty Cart" button focusing the customer to proceed with purchasing all items.
-					            
-								<script>
-									Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_cart_hide_emptycart');
-								</script>
-					            
-					            ]]>
-				            </comment> 
-				        </hide_emptycart>
-
-				        <hide_crosssells>
-							<label>Hide Cross-sells block</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>2</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>
-				            <comment>
-				            <![CDATA[
-				            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-				            Removes the "Cross Sells" block.
-				            
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_cart_hide_crosssells');
-							</script>
-				            
-				            ]]>
-				        	</comment>                      
-				        </hide_crosssells>
-				        
-				        <hide_estimateshipping>
-							<label>Hide Estimate Delivery block</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>3</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store> 
-							<comment>
-				            <![CDATA[
-				            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-				            Remove the "Estimate Delivery" Form
-				            
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_cart_hide_estimateshipping');
-							</script>
-				            
-				            ]]>
-				        	</comment>  
-				                            			        
-				        </hide_estimateshipping>	
-				        				        
-				        <hide_discountcode>
-							<label>Hide Discount Code block</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-				            <sort_order>4</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>          
-							<comment>
-				            <![CDATA[
-				            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-				            Remove the "Discount Code" Block
-				            
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_cart_hide_discountcode');
-							</script>
-				            
-				            ]]>
-				        	</comment>  				            
-				                    			        
-				        </hide_discountcode>	
-
-					</fields>
-				
-				</reducedcheckout_cart>							
-				
-				
-				<reducedcheckout_customergroups>
-					<label>Reduced Checkout Customer Group Settings </label>
-                    <sort_order>50</sort_order>
-                    <show_in_default>1</show_in_default>
-                    <show_in_website>1</show_in_website>
-                    <show_in_store>1</show_in_store>   
-					<expanded>1</expanded>
-					<comment><![CDATA[ 
-					<ol>
-						<li><h3>Customer Groups Rules</h3></li>
-                        <li>This feature will not work if you have chosen to "Hide login step" in the login step options above. This is because a customer needs to login before we can see what group they are in.</li>
-                        <li>For support and buckets more features <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li>
-					</ol> ]]></comment>		
-	
-					<fields>
-				        <customergroups_enabled>
-							<label>Enabled Customer Groups</label>
-							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    	
-							<comment>				            
-							<![CDATA[
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_customergroups_customergroups_enabled');
-							</script>
-				            ]]>
-							</comment>	
-				            <sort_order>1</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				        </customergroups_enabled>
-
-				        <shipping_noskip_customergroups>
-							<label>Do not skip Shipping Method for Customer Groups</label>
-							<frontend_type>multiselect</frontend_type>
-							<source_model>adminhtml/system_config_source_customer_group</source_model>    				        
-				            <sort_order>20</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>             
-				            <comment>
-				            
-				            <![CDATA[
-				            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-							Do not skip the shipping method step for these Customer Groups (Useful for b2b or premium customers that need Next Day couriers).				            
-							
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_customergroups_shipping_noskip_customergroups');
-							</script>
-				            
-				            ]]>
-				                       
-				            </comment>                   
-				        </shipping_noskip_customergroups>
-
-				        <payment_noskip_customergroups>
-							<label>Do not skip Payment Method for Customer Groups</label>
-							<frontend_type>multiselect</frontend_type>
-							<source_model>adminhtml/system_config_source_customer_group</source_model>    				        
-				            <sort_order>30</sort_order>
-				            <show_in_default>1</show_in_default>
-				            <show_in_website>1</show_in_website>
-				            <show_in_store>1</show_in_store>                    
-				            <comment>
-				            
-				            <![CDATA[
-				            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
-							Do not skip the payment method step for these Customer Groups (Useful for b2b customers that have a non-standard / alternative way of paying).				            
-							
-							<script>
-								Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_customergroups_payment_noskip_customergroups');
-							</script>
-				            
-				            ]]>
-				                       
-				            </comment>                   
-				            
-				        </payment_noskip_customergroups>
-					</fields>
-
-				</reducedcheckout_customergroups>
-
+	 				</reducedcheckout>
 	        </groups>                            
  
         </clearandfizzy_reducedcheckout_settings>
