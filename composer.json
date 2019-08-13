@@ -3,7 +3,7 @@
     "type": "magento-module",
     "license": "CC-BY-ND-3.0",
     "homepage": "",
-    "description": "The standard Magento checkout process but allows you to force payment and shipping methods. ",
+    "description": "Reduce the checkout process by force shipping & payment methods, adds "register" form to order success page.",
     "authors": [
     {
         "name": "Gareth Price",

@@ -3,7 +3,7 @@
  
 	<modules>
 		<Clearandfizzy_Reducedcheckout>
-			<version>1.0.0</version>
+			<version>1.5.1</version>
 		</Clearandfizzy_Reducedcheckout>
 	</modules>
  
@@ -23,17 +23,21 @@
              
              <shipping_resource>
              	<rewrite>
-
-             		
              		<carrier_tablerate>Clearandfizzy_ReducedCheckout_Model_Resource_Carrier_TablerateFix</carrier_tablerate>
-             		
-
-             		
              	</rewrite>
              </shipping_resource>
              
-             
         </models>   
+        
+        <resources>
+            <reducedcheckout_setup>
+                <setup>
+                    <module>Clearandfizzy_Reducedcheckout</module>
+                    <class>Clearandfizzy_Reducedcheckout_Model_Resource_Setup</class>
+                </setup>
+            </reducedcheckout_setup>
+        </resources>
+        
 
         <helpers>
              <clearandfizzy_reducedcheckout>
@@ -42,6 +46,16 @@
         </helpers>               
         
 		<events>
+			<customer_register_success>
+                <observers>
+                    <checkCustomerCreated>
+                        <class>Clearandfizzy_Reducedcheckout_Model_Signup_Observer</class>
+                        <method>checkCustomerCreated</method>
+                    </checkCustomerCreated>
+                </observers>
+			
+			</customer_register_success>
+
             <controller_action_layout_load_before>
                 <observers>
                     <checkReducedCheckout>
@@ -87,14 +101,21 @@
 
 			<reducedcheckout>
 				<isenabled>0</isenabled>		
+				<enable28112fix>0</enable28112fix>
 				<guestcheckoutonly>0</guestcheckoutonly>		
 				<default_shipping>noskip</default_shipping>		
-				<default_payment>noskip</default_payment>		
+				<default_payment>noskip</default_payment>
+				
 			</reducedcheckout>
 			
 			<reducedcheckout_customergroups>
 				<customergroups_enabled>0</customergroups_enabled>
 			</reducedcheckout_customergroups>			
+
+			<reducedcheckout_order_success>
+				<register_on_order_success>0</register_on_order_success>
+				<register_on_order_success_cms_block>reducedcheckout_success_form_register</register_on_order_success_cms_block>
+			</reducedcheckout_order_success>
 
 		</clearandfizzy_reducedcheckout_settings>
 	</default>

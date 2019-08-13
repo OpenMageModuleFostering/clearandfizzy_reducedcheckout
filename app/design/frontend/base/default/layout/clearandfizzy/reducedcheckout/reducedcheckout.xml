@@ -37,4 +37,19 @@
 		
 	</clearandfizzy_checkout_reduced_skip_shippingmethod> 
 
+    <clearandfizzy_checkout_reduced_success_register translate="label">
+		<reference name="head">
+			<action method="addCss"><stylesheet>css/clearandfizzy/reducedcheckout.css</stylesheet></action>
+		</reference>
+
+        <reference name="content">
+			<remove name="checkout.success" />
+			<block type="core/template" name="checkout.success.wrapper" template="clearandfizzy/reducedcheckout/success/wrapper.phtml">
+            	<block type="checkout/onepage_success" name="checkout.success.2" template="checkout/success.phtml"/>
+            	<block type="core/template" name="checkout.success.form.register" template="clearandfizzy/reducedcheckout/success/wrapper/signup.phtml"/>
+            </block>
+        </reference>
+
+    </clearandfizzy_checkout_reduced_success_register>
+
 </layout>

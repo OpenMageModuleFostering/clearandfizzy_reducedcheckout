@@ -1,17 +1,22 @@
 <?xml version="1.0"?>
 <package>
     <name>Clearandfizzy_Reducedcheckout</name>
-    <version>1.4.0</version>
+    <version>1.5.1</version>
     <stability>stable</stability>
     <license uri="http://creativecommons.org/licenses/by-nd/3.0/">CC BY-ND 3.0</license>
     <channel>community</channel>
     <extends/>
-    <summary>The standard Magento checkout process but allows you to force payment and shipping methods. </summary>
-    <description>Extending the standard Magento checkout process this extension allows you reduce the number of steps a customer takes to a minimum, by allowing you to force one type of payment and shipping method within the admin screen and therefore remove these steps from the checkout process. &#xD;
+    <summary>Reduce the checkout process by force shipping &amp; payment methods, adds "register" form to order success page.</summary>
+    <description>Extending the standard Magento onepage checkout  this ReducedCheckout extension gives you the ability to reduce the number of steps a customer takes to a minimum.  &#xD;
+&#xD;
+Configure it to remove the login step by forcing guest checkout, force payment and shipping methods to your choosing. Even convert guest users to registered uses on the checkout success page.&#xD;
 &#xD;
 Integration with 3rd-party payment and shipping extensions should be easy as this extension makes no modifications to the base templates.&#xD;
 &#xD;
-Contains a fix for Magento bug #28112 with regards to Shipping Tablerates.</description>
+Also&#xD;
+* Options to change checkout process based on Customer Group&#xD;
+* Contains a fix for Magento bug #28112 with regards to Shipping Tablerates.&#xD;
+</description>
     <notes>Did we add new features?&lt;br /&gt;&#xD;
 Yes&lt;br /&gt;&#xD;
 &lt;br /&gt;&#xD;
@@ -19,12 +24,15 @@ Did you fix a bunch of Bugs?&lt;br /&gt;&#xD;
 Yes&lt;br /&gt;&#xD;
 &lt;br /&gt;&#xD;
 Well then, what in funkytown did you do?&lt;br /&gt;&#xD;
-Added a fix for Magento bug #28112 which prevent Shipping Tablerates to work correctly.&lt;br /&gt;  &#xD;
-You can enable /disable the fix on the configuration screen.&lt;br /&gt;</notes>
+Added a fix for logged in users when forceguest checkout was enabled.&lt;br /&gt;&lt;br /&gt;&#xD;
+You can now enable a Registration form on the order success page to convert those guest checkout people.&lt;br /&gt;&#xD;
+&lt;br /&gt;&#xD;
+&#xD;
+</notes>
     <authors><author><name>Gareth Price</name><user>clearandfizzy</user><email>gareth@clearandfizzy.com</email></author></authors>
-    <date>2013-09-08</date>
-    <time>22:45:59</time>
-    <contents><target name="magecommunity"><dir name="Clearandfizzy"><dir name="Reducedcheckout"><dir name="Helper"><file name="Data.php" hash="23f488e4f752563e3343c6ea02004ac3"/></dir><dir name="Model"><file name="Observer.php" hash="8f4498205db5d37752b3f795816517b4"/><dir name="Resource"><dir name="Carrier"><file name="TablerateFix.php" hash="0a8685c145d95ae76b838d2af2b88638"/></dir></dir><dir name="System"><dir name="Config"><dir name="Source"><dir name="Payment"><file name="EnabledMethods.php" hash="f6b69e6fc6697870c53c6c86dbd68e98"/></dir><dir name="Shipping"><file name="EnabledMethods.php" hash="5cf16d02a105f9699e4258bb5bc57364"/></dir></dir></dir></dir></dir><dir name="controllers"><file name="OnepageController.php" hash="8d8d7ee733035d27a202cbd277041267"/></dir><dir name="etc"><file name="adminhtml.xml" hash="0bb1372118e88ad09fbd1b1d5113dea7"/><file name="config.xml" hash="a3071a3f2a7c9988ee42b4c72a8f1eb0"/><file name="system.xml" hash="7b3d424939a66fd0a31de7e33f54229b"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Clearandfizzy_ReducedCheckout.xml" hash="9cb58e8121e0c0e294f10a3595b2be7d"/></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="reducedcheckout.xml" hash="282aeb07fe3b9510bcbd92498907968f"/></dir></dir></dir><dir name="template"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="onepage.phtml" hash="21921ab772ef02af217c49200619f2d5"/></dir></dir></dir></dir></dir></dir></dir></target></contents>
+    <date>2013-09-16</date>
+    <time>18:42:02</time>
+    <contents><target name="magecommunity"><dir name="Clearandfizzy"><dir name="Reducedcheckout"><dir name="Helper"><file name="Data.php" hash="3d2c90f0621f5eaf5f83d4b2907bef1b"/><file name="Order.php" hash="7767797ecc49d77744772711edc34309"/></dir><dir name="Model"><file name="Observer.php" hash="0b45eae33ccdeca9c52d18ce98dde397"/><dir name="Resource"><dir name="Carrier"><file name="TablerateFix.php" hash="0a8685c145d95ae76b838d2af2b88638"/></dir><file name="Setup.php" hash="a61d7b6fc72e35a85b614adfa7bdb0de"/></dir><dir name="Signup"><file name="Observer.php" hash="dae40c461569f1d47032fa7490aea1e3"/></dir><dir name="System"><dir name="Config"><dir name="Source"><dir name="Cms"><file name="Block.php" hash="c81fc3cf02fe8eed1685c2db80c84198"/></dir><dir name="Payment"><file name="EnabledMethods.php" hash="f6b69e6fc6697870c53c6c86dbd68e98"/></dir><dir name="Shipping"><file name="EnabledMethods.php" hash="5cf16d02a105f9699e4258bb5bc57364"/></dir></dir></dir></dir></dir><dir name="controllers"><file name="OnepageController.php" hash="8d8d7ee733035d27a202cbd277041267"/><file name="SignupController.php" hash="aa5a86065a4722d069627635188b72e4"/></dir><dir name="etc"><file name="adminhtml.xml" hash="0bb1372118e88ad09fbd1b1d5113dea7"/><file name="config.xml" hash="dda64fe70a3a426b95b39b914cbbc0bb"/><file name="system.xml" hash="aaf0aa503322d55543ba741d07fa759b"/></dir><dir name="sql"><dir name="reducedcheckout_setup"><file name="install-1.5.1.php" hash="c938aa01bcb1c36461fb9f3e2145ec03"/></dir></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Clearandfizzy_ReducedCheckout.xml" hash="9cb58e8121e0c0e294f10a3595b2be7d"/></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="reducedcheckout.xml" hash="7613031b17573e99fda0cdc79437d9f7"/></dir></dir></dir><dir name="template"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="onepage.phtml" hash="21921ab772ef02af217c49200619f2d5"/><dir name="success"><dir name="wrapper"><file name="signup.phtml" hash="e9268dd4f9857a78a50ccbab3a084cb0"/></dir><file name="wrapper.phtml" hash="5adda37a860234711644153b757ad53e"/></dir></dir></dir></dir></dir></dir></dir></dir></target><target name="mageskin"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="css"><dir name="clearandfizzy"><file name="reducedcheckout.css" hash="4a00abdcb804c0c08efec311acc320cb"/></dir></dir></dir></dir></dir></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>

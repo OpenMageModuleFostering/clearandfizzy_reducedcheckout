@@ -126,14 +126,55 @@
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
-					        </default_payment>				        
+					        </default_payment>		
+					        
+					        					        		        
 				        
 				    </fields>    
 				</reducedcheckout>
+				
+				<reducedcheckout_order_success>
+					<label>Reduced Checkout Order Success page Settings </label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>   
+					<expanded>1</expanded>
+					<comment><![CDATA[ <ol>
+						
+					</ol> ]]></comment>		
+	
+					<fields>
+					
+						<register_on_order_success>
+							<label>Enable "Register now" Form on Order Success page</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+				            <comment>Displays a form encouraging guest users to register</comment>
+				            <sort_order>4</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </register_on_order_success>	
+				        
+						<register_on_order_success_cms_block>
+							<label>CMS Static Block</label>
+   	                        <frontend_type>select</frontend_type>
+                            <source_model>clearandfizzy_reducedcheckout/system_config_source_cms_block</source_model>
+                           	<comment></comment>
+                           	<depends><register_on_order_success>1</register_on_order_success></depends>
+				            <sort_order>5</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </register_on_order_success_cms_block>	
+					</fields>
+					
+				</reducedcheckout_order_success>	
 	
 				<reducedcheckout_customergroups>
 					<label>Reduced Checkout Customer Group Settings </label>
-                    <sort_order>30</sort_order>
+                    <sort_order>40</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>   

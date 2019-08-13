@@ -1,0 +1,18 @@
+body.checkout-onepage-success .buttons-set
+{
+	display: none;
+}
+
+body.checkout-onepage-success .buttons-set.show
+{
+	display: block;
+}
+
+
+body.checkout-onepage-success #reducedcheckout_success_form_register .form-list
+{
+clear: both;
+margin: 1em 0 0;
+padding: 8px 0 0;
+}
+

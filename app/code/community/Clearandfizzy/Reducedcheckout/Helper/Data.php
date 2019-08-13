@@ -21,12 +21,23 @@ class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstrac
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/enable28112fix');
 		return $value;
 	} // end
-
+	
 	public function getCustomerGroupsEnabled() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/customergroups_enabled');
 		return $value;
 	}
 
+	public function guestsCanRegisterOnOrderSuccess() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_order_success/register_on_order_success');
+		return $value;
+	} // end
+	
+	public function getCMSBlockIdForOrderSuccessForm() {
+		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_order_success/register_on_order_success_cms_block');
+		return $value;
+	} // end
+	
+	
 	public function getShippingCustomerGroups() {
 
 		if ($this->getCustomerGroupsEnabled() == 0) {

@@ -1,0 +1,53 @@
+<?php 
+/*
+
+<h3>That's great!</h3>
+<p>Thanks for making a purchase - we recommend you confirm your email address and enter a password so we can create a new account from the details you've given during your checkout.</p>
+<h4>Benefits</h4>
+<ul>
+<ul>
+<li>Make it easier for you to track your order &amp; get customer support.</li>
+<li>You won't need to enter all your details again next-time you visit.</li>
+</ul>
+</ul>
+
+ */
+
+	$email 			= Mage::helper('clearandfizzy_reducedcheckout/order')->getEmail();
+	$cms_block_id 	= Mage::helper('clearandfizzy_reducedcheckout/data')->getCMSBlockIdForOrderSuccessForm();
+
+?>
+<div id="reducedcheckout_success_form_register"> 
+	<form action="/reducedcheckout/signup" method="post" name="reducedcheckout_success_form">
+		
+		<div class="fieldset">
+			<h2 class="legend">Create Account</h2>
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId($cms_block_id)->toHtml() ?>
+			
+			<ul class="form-list">
+				<li class="fields">
+					<div class="field">
+						<label for="email" class="required"><?php echo $this->__('Email Address');?></label>
+						<div class="input-box">
+							<strong><?php echo  $email; ?></strong>
+						</div>
+					</div>
+
+					<div class="field">
+						<label for="pass" class="required"><em>*</em><?php echo $this->__('Password');?></label>
+						<div class="input-box">
+							<input type="password" name="password" class="input-text required-entry validate-password" id="password" title="Password" value="" />
+						</div>
+					</div>	
+					
+				</li>
+			</ul>
+			
+			<div class="buttons-set show">
+	            <p class="required">* Required Fields</p>
+	            <button type="submit" title="Submit" class="button"><span><span>Create Account</span></span></button>
+	        </div>			
+		
+		</div>
+	</form>
+</div>
