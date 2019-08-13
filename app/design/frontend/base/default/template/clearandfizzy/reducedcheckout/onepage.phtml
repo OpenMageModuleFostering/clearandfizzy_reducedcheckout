@@ -25,7 +25,7 @@
 	} // end if
 ?>
     var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveBilling') ?>');
-    var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveShipping') ?>','<?php echo $this->getUrl('reducedcheckout/onepage/review') ?>');
+    var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveShipping') ?>','<?php echo $this->getUrl('reducedcheckout/onepage/shippingMethod') ?>');
     var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('reducedcheckout/onepage/saveShippingMethod') ?>");
     var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('reducedcheckout/onepage/savePayment') ?>');
 

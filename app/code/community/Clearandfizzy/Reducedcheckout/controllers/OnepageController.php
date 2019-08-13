@@ -127,7 +127,8 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 	} // end
 
 
-	public function saveShippingAction($gotosection = true) {
+	public function saveShippingAction($gotonext = true) {
+
 		if ($this->_expireAjax()) {
 			return;
 		}
@@ -140,16 +141,15 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 			// save the billing address info
 			$result = $this->getOnepage()->saveShipping($data, $customerAddressId);
 
-			// set the checkout method
-			$this->saveMethodAction();
-
-			// attempt to load the next section
-			if ( $gotonext == true ) {
-				$result = $this->getNextSection($result, $current = 'billing');
-				$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
-			} // end if
 
 		}
+
+		// attempt to load the next section
+		if ( $gotonext == true ) {
+			$result = $this->getNextSection($result, $current = 'billing');
+			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
+		} // end if
+
 
 
 	} // end
