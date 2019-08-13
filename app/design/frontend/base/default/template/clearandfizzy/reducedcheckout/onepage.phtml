@@ -50,17 +50,23 @@
 
 <script type="text/javascript">
 //<![CDATA[
-    var checkout = new Checkout(accordion,{
-        progress: '<?php echo $this->getUrl('reducedcheckout/onepage/progress') ?>',
-        review: '<?php echo $this->getUrl('reducedcheckout/onepage/review') ?>',
-        saveMethod: '<?php echo $this->getUrl('reducedcheckout/onepage/saveMethod') ?>',
-        failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
+
+<?php 	// get an instance of the URL helper class 
+	$url_helper = $this->helper('clearandfizzy_reducedcheckout/url');
+?>           
+
+	
+	var checkout = new Checkout(accordion,{
+        progress: '<?php echo $url_helper->getProgressUrl(); ?>',
+        review: '<?php echo $url_helper->getReviewUrl(); ?>',
+        saveMethod: '<?php echo $url_helper->getSaveMethodUrl(); ?>',
+        failure: '<?php echo  $url_helper->getFailureUrl(); ?>'}
     );
 
-    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveBilling') ?>');
-    var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveShipping') ?>','<?php echo $this->getUrl('reducedcheckout/onepage/shippingMethod') ?>');
-    var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('reducedcheckout/onepage/saveShippingMethod') ?>");
-    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('reducedcheckout/onepage/savePayment') ?>');
+    var billing = new Billing('co-billing-form', '<?php echo $url_helper->getAddressUrl(); ?>address/', '<?php echo $url_helper->getSaveBillingUrl(); ?>');
+    var shipping = new Shipping('co-shipping-form', '<?php echo $url_helper->getAddressUrl();  ?>address/', '<?php echo $url_helper->getSaveShippingUrl();  ?>','<?php echo $url_helper->getSaveShippingMethod(); ?>');
+    var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('reducedcheckout/onepage/saveShippingMethod', array("_secure"=>true)) ?>");
+    var payment = new Payment('co-payment-form', '<?php echo $url_helper->getSavePaymentUrl(); ?>');
   
 <?php
 	// this is to enable forced guest checkout
