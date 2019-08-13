@@ -12,47 +12,12 @@ class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstrac
 		return $value;
 	} // end
 
-<<<<<<< HEAD
-	public function getCustomerGroupsEnabled() {
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/customergroups_enabled');
-		return $value;
-	}
-
-	public function getShippingCustomerGroups() {
-
-		if ($this->getCustomerGroupsEnabled() == 0) {
-			return array();
-		} // end
-
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/shipping_noskip_customergroups');
-		$value = explode(',', $value);
-
-=======
 
 	public function isGuestCheckoutOnly() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/guestcheckoutonly');
->>>>>>> refs/remotes/extensions/master
 		return $value;
 	} // end
 
-<<<<<<< HEAD
-	public function getPaymentCustomerGroups() {
-
-		if ($this->getCustomerGroupsEnabled() == 0) {
-			return array();
-		} // end
-
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/payment_noskip_customergroups');
-		$value = explode(',', $value);
-
-		return $value;
-	} // end
-
-	public function isGuestCheckoutOnly() {
-		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/guestcheckoutonly');
-		return $value;
-	} // end
-=======
 
 	public function getCustomerGroupsEnabled() {
 		$value = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout_customergroups/customergroups_enabled');
@@ -83,7 +48,6 @@ class Clearandfizzy_Reducedcheckout_Helper_Data extends Mage_Core_Helper_Abstrac
 		return $value;
 	} // end
 
->>>>>>> refs/remotes/extensions/master
 
 
 	/**
