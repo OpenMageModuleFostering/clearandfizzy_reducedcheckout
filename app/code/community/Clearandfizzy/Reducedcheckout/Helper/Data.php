@@ -24,7 +24,7 @@
  *
  * @category    Community
  * @package     Clearandfizzy_Reducedcheckout
- * @copyright   Copyright (c) 2013 Clearandfizzy Ltd. (http://www.clearandfizzy.com)
+ * @copyright   Copyright (c) 2014 Clearandfizzy ltd. (http://www.clearandfizzy.com)
  * @license     http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons (CC BY-ND 3.0) 
  * @author		Gareth Price <gareth@clearandfizzy.com>
  * 

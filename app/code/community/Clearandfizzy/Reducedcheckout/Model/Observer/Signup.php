@@ -24,12 +24,12 @@
  *
  * @category    Community
  * @package     Clearandfizzy_Reducedcheckout
- * @copyright   Copyright (c) 2013 Clearandfizzy Ltd. (http://www.clearandfizzy.com)
+ * @copyright   Copyright (c) 2014 Clearandfizzy ltd. (http://www.clearandfizzy.com)
  * @license     http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons (CC BY-ND 3.0) 
  * @author		Gareth Price <gareth@clearandfizzy.com>
  * 
  */
-class Clearandfizzy_Reducedcheckout_Model_Signup_Observer extends Mage_Core_Model_Observer {
+class Clearandfizzy_Reducedcheckout_Model_Observer_Signup extends Mage_Core_Model_Observer {
 	
 	protected $_helper;
 	
@@ -39,8 +39,11 @@ class Clearandfizzy_Reducedcheckout_Model_Signup_Observer extends Mage_Core_Mode
 		
 	/**
 	 * Observes the user register event.
+	 * If a guest customer decides to register then we should assign the order to that new customer account
+	 * 
 	 * @param Varien_Event_Observer $observer
 	 */
+	
 	public function checkCustomerCreated(Varien_Event_Observer $observer) {
 		$helper 	= $this->_helper;
 		

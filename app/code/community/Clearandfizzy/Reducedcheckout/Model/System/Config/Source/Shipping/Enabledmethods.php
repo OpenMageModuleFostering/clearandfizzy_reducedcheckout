@@ -24,40 +24,37 @@
  *
  * @category    Community
  * @package     Clearandfizzy_Reducedcheckout
- * @copyright   Copyright (c) 2013 Clearandfizzy Ltd. (http://www.clearandfizzy.com)
+ * @copyright   Copyright (c) 2014 Clearandfizzy ltd. (http://www.clearandfizzy.com)
  * @license     http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons (CC BY-ND 3.0) 
  * @author		Gareth Price <gareth@clearandfizzy.com>
  * 
  */
-class Clearandfizzy_Reducedcheckout_Model_System_Config_Source_Payment_EnabledMethods {
+class Clearandfizzy_Reducedcheckout_Model_System_Config_Source_Shipping_Enabledmethods {
 
 	public function toOptionArray()
 	{
 
-		$active_methods = Mage::getSingleton('payment/config')->getActiveMethods();
+		$active_carriers = Mage::getSingleton('shipping/config')->getActiveCarriers();
 
-		$methods = array();
-		$methods['noskip'] = Mage::helper('clearandfizzy_reducedcheckout')->__("Do not skip [Default Magento]");
+		$carrier_methods = array();
+		$carrier_methods['noskip'] = Mage::helper('clearandfizzy_reducedcheckout')->__("Do not skip [Default Magento]");
 
-		foreach ( $active_methods as $code => $value ) {
+		foreach ( $active_carriers as $code => $carrier ) {
+			$label = Mage::getStoreConfig('carriers/'.$code.'/title');
+			$enabled = Mage::getStoreConfig('carriers/'.$code. '/active');
 
-			switch ($code) {
+			$methods = $carrier->getAllowedMethods();
 
-				// we can't skip this method so make sure its not added to the array
-				case "ccsave":
-				break;
+			foreach ($methods as $method_code => $method_label ) {
 
-				default:
-					$label = Mage::getStoreConfig('payment/'.$code.'/title');
-					$methods[$code] = $label;
-				break;
-
-			} // end
-
+				if ( $label != null && $enabled == 1 ) {
+					$carrier_methods[$code.'_'.$method_code] = $label . " [".$method_label."]";
+				} // end
+			}
 
 		} // end
 
-		return $methods;
+		return $carrier_methods;
 
 	} // end fun
 
