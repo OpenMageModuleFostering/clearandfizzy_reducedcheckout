@@ -26,7 +26,9 @@
 
 <?php
 	// this is to enable forced guest checkout
-	if ( $this->helper('clearandfizzy_reducedcheckout/data')->isGuestCheckoutOnly() == true ) {
+	if (Mage::getSingleton('customer/session')->isLoggedIn() == false && 
+		$this->helper('clearandfizzy_reducedcheckout/data')->isGuestCheckoutOnly() == true 
+		) {
 ?>
 		Element.hide('register-customer-password');
 	    checkout.gotoSection('billing');
@@ -37,6 +39,6 @@
     var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveShipping') ?>','<?php echo $this->getUrl('reducedcheckout/onepage/shippingMethod') ?>');
     var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('reducedcheckout/onepage/saveShippingMethod') ?>");
     var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('reducedcheckout/onepage/savePayment') ?>');
-
+    
 //]]>
 </script>

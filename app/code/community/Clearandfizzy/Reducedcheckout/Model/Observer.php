@@ -20,7 +20,9 @@ class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Obser
 			$update->addHandle('clearandfizzy_checkout_reduced');
 
 			// should we remove the login step..
-			if (Mage::helper('clearandfizzy_reducedcheckout/data')->isGuestCheckoutOnly() == true) {
+			if (
+				Mage::getSingleton('customer/session')->isLoggedIn() == false && 
+				Mage::helper('clearandfizzy_reducedcheckout/data')->isGuestCheckoutOnly() == true) {
 				$update->addHandle('clearandfizzy_checkout_reduced_forceguestonly');
 			} // end
 
@@ -37,7 +39,7 @@ class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Obser
 		} // end
 		
 		
-		##checkout_onepage_success
+		//checkout_onepage_success
 		if ( array_search('checkout_onepage_success', $handles) == true ) {
 			
 			$update = $observer->getEvent()->getLayout()->getUpdate();
