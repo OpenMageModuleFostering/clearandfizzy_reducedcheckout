@@ -39,13 +39,6 @@
 		</reference>	
 	</clearandfizzy_checkout_reduced>	
 	
-	<clearandfizzy_checkout_reduced_login_custom>
-		<reference name="checkout.onepage.login">
-			<action method="setTemplate"><template>clearandfizzy/reducedcheckout/onepage/login.phtml</template> </action>	
-		</reference>
-	</clearandfizzy_checkout_reduced_login_custom>
-	
-
 	<clearandfizzy_checkout_reduced_forceguestonly> 
 
         <reference name="content">
@@ -75,21 +68,6 @@
 		</reference>
 		
 	</clearandfizzy_checkout_reduced_skip_shippingmethod> 
-
-    <clearandfizzy_checkout_reduced_success_register>
-		<reference name="head">
-			<action method="addCss"><stylesheet>css/clearandfizzy/reducedcheckout.css</stylesheet></action>
-		</reference>
-
-        <reference name="content">
-			<remove name="checkout.success" />
-			<block type="core/template" name="checkout.success.wrapper" template="clearandfizzy/reducedcheckout/success/wrapper.phtml">
-            	<block type="checkout/onepage_success" name="checkout.success.2" template="checkout/success.phtml"/>
-            	<block type="core/template" name="checkout.success.form.register" template="clearandfizzy/reducedcheckout/success/wrapper/signup.phtml"/>
-            </block>
-        </reference>
-
-    </clearandfizzy_checkout_reduced_success_register>
     
    <clearandfizzy_checkout_reduced_hide_telephonefax>
  		<reference name="head">

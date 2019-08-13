@@ -56,7 +56,7 @@
 							<li>Allows forced Shipping method.</li>
 							<li>Fix for Magento Shipping Tablerates in 1.7.0.2 <a target="_blank" href="http://www.magentocommerce.com/bug-tracking/issue?issue=14069">http://www.magentocommerce.com/bug-tracking/issue?issue=14069</a></li>
 							<li>Allows you to setup rules based on Customer groups.</li>
-							<li><a target="_blank" href="http://www.magentocommerce.com/magento-connect/clearandfizzy-reduced-one-step-checkout-6893.html">http://www.magentocommerce.com/magento-connect/clearandfizzy-reduced-one-step-checkout-6893.html</a>
+	                        <li>For support and tons more features <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li>
 						</ol> ]]></comment>				
 						<expanded>1</expanded>							
 					</reducedcheckout_about>
@@ -86,7 +86,21 @@
 								<label>Login Step</label>
 								<frontend_type>select</frontend_type>
 					            <source_model>clearandfizzy_reducedcheckout/system_config_source_login_step</source_model>
-					            <comment>Select the look of of the login step of the checkout process</comment>
+					            <comment>
+					            <![CDATA[
+					            <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li><br />
+					            Select the look of of the login step of the checkout process. For support and tons more features.
+					            
+					            <script>
+					            	$$('select#clearandfizzy_reducedcheckout_settings_reducedcheckout_loginstep_type option').each(function(o) {
+										if(o.readAttribute('value') == '2') { 
+											o.disabled = true;
+			  							} // end if
+									});
+								</script>
+					            
+					            ]]>
+					            </comment>
 					            <sort_order>20</sort_order>
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
@@ -106,7 +120,7 @@
 	
 							<!-- todo: Gp - make this into a drop down menu -->
 					        <default_shipping>
-					            <label>Default Shipping Method</label>
+					            <label>Shipping Method Step</label>
 					            <frontend_type>select</frontend_type>
 					            <source_model>clearandfizzy_reducedcheckout/system_config_source_shipping_enabledMethods</source_model>
 					            <comment>The code for the default shipping method</comment>
@@ -118,7 +132,7 @@
 				        
 				        	<default_payment>
 								<!-- todo: Gp - make this into a drop down menu -->
-					            <label>Default Payment Method</label>
+					            <label>Payment Method Step</label>
 					            <frontend_type>select</frontend_type>
 					            <source_model>clearandfizzy_reducedcheckout/system_config_source_payment_enabledMethods</source_model>
 					            <comment>The code for the default payment method</comment>
@@ -129,29 +143,25 @@
 					        </default_payment>		
 
 							<register_on_order_success>
-								<label>Enable "Register now" Form on Order Success page</label>
+								<label>Order Success page - Guest to Customer Converter</label>
 								<frontend_type>select</frontend_type>
-								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
-					            <comment>Displays a form encouraging guest users to register</comment>
+								<source_model>adminhtml/system_config_source_yesno</source_model>
+					            <comment>
+					               <![CDATA[<a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a><br />
+					            Enable "Register now" Form on Order Success page - Displays a form encouraging guest users to register. 
+
+								<script>
+									Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_register_on_order_success');
+								</script>
+					               ]]>
+					            </comment>
 					            <sort_order>50</sort_order>
 					            <show_in_default>1</show_in_default>
 					            <show_in_website>1</show_in_website>
 					            <show_in_store>1</show_in_store>                    
 					        </register_on_order_success>	
-					        
-							<register_on_order_success_cms_block>
-								<label>CMS Static Block</label>
-	   	                        <frontend_type>select</frontend_type>
-	                            <source_model>clearandfizzy_reducedcheckout/system_config_source_cms_block</source_model>
-	                           	<comment></comment>
-	                           	<depends><register_on_order_success>1</register_on_order_success></depends>
-					            <sort_order>60</sort_order>
-					            <show_in_default>1</show_in_default>
-					            <show_in_website>1</show_in_website>
-					            <show_in_store>1</show_in_store>                    
-					        </register_on_order_success_cms_block>	
-
-							<enable28112fix>
+					       
+					       	<enable28112fix>
 								<label>Enable Shipping Tablerates Bug #28112 fix</label>
 								<frontend_type>select</frontend_type>
 								<source_model>adminhtml/system_config_source_yesno</source_model>    				        
@@ -172,17 +182,26 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>   
 					<expanded>1</expanded>
-					<comment><![CDATA[ <ol>
+					<comment><![CDATA[ 
+					<ol>
 						<li><h3>Customer Groups Rules</h3></li>
-						<li>For most users its advisable to disable forced guest checkout.</li>
-						<li>When enabled the customer groups selected will be forced to show thier respective steps.</li>
+                        <li>This feature will not work if you have chosen to "Hide login step" in the login step options above. This is because a customer needs to login before we can see what group they are in.</li>
+                        <li>For support and tons more features <a target="_blank" style="color: blue;"href="http://www.magentocommerce.com/magento-connect/reduced-checkout-pro-guest-converter.html">Upgrade to the PRO version</a></li>
 					</ol> ]]></comment>		
 	
 					<fields>
 				        <customergroups_enabled>
 							<label>Enabled Customer Groups</label>
 							<frontend_type>select</frontend_type>
-							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+							<source_model>adminhtml/system_config_source_yesno</source_model>    	
+							<comment>
+							<![CDATA[
+								<script>
+									Form.Element.disable('clearandfizzy_reducedcheckout_settings_reducedcheckout_customergroups_customergroups_enabled');
+								</script>
+							
+							]]>
+							</comment>	
 				            <sort_order>1</sort_order>
 				            <show_in_default>1</show_in_default>
 				            <show_in_website>1</show_in_website>
