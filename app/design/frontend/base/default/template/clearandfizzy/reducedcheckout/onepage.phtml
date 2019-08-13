@@ -1,3 +1,36 @@
+<?php 
+/**
+ * Clearandfizzy
+*
+* NOTICE OF LICENSE
+*
+*
+* THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
+* COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY
+* COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
+* AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+
+* BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE
+* TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY
+* BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+* CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
+* CONDITIONS.
+*
+* DISCLAIMER
+*
+* Do not edit or add to this file if you wish to upgrade this extension to newer
+* versions in the future. If you wish to customize this extension for your
+* needs please refer to http://www.clearandfizzy.com for more information.
+*
+* @category    Community
+* @package     Clearandfizzy_Reducedcheckout
+* @copyright   Copyright (c) 2013 Clearandfizzy Ltd. (http://www.clearandfizzy.com)
+* @license     http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons (CC BY-ND 3.0)
+* @author		Gareth Price <gareth@clearandfizzy.com>
+*
+*/
+?>
+
 <?php /* -- START SAGEPAY INTEGRATION -- */ ?>
 	<div class="multiple-checkout">
 		<span></span>
@@ -24,6 +57,11 @@
         failure: '<?php echo $this->getUrl('checkout/cart') ?>'}
     );
 
+    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveBilling') ?>');
+    var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveShipping') ?>','<?php echo $this->getUrl('reducedcheckout/onepage/shippingMethod') ?>');
+    var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('reducedcheckout/onepage/saveShippingMethod') ?>");
+    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('reducedcheckout/onepage/savePayment') ?>');
+  
 <?php
 	// this is to enable forced guest checkout
 	if (Mage::getSingleton('customer/session')->isLoggedIn() == false && 
@@ -35,10 +73,6 @@
 <?php
 	} // end if
 ?>
-    var billing = new Billing('co-billing-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveBilling') ?>');
-    var shipping = new Shipping('co-shipping-form', '<?php echo $this->getUrl('reducedcheckout/onepage/getAddress') ?>address/', '<?php echo $this->getUrl('reducedcheckout/onepage/saveShipping') ?>','<?php echo $this->getUrl('reducedcheckout/onepage/shippingMethod') ?>');
-    var shippingMethod = new ShippingMethod('co-shipping-method-form', "<?php echo $this->getUrl('reducedcheckout/onepage/saveShippingMethod') ?>");
-    var payment = new Payment('co-payment-form', '<?php echo $this->getUrl('reducedcheckout/onepage/savePayment') ?>');
     
 //]]>
 </script>

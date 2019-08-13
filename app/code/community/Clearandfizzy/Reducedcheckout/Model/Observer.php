@@ -1,7 +1,43 @@
 <?php
+/**
+ * Clearandfizzy
+ *
+ * NOTICE OF LICENSE
+ *
+ *
+ * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
+ * COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY
+ * COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
+ * AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
 
+ * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE
+ * TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY
+ * BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+ * CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
+ * CONDITIONS.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * versions in the future. If you wish to customize this extension for your
+ * needs please refer to http://www.clearandfizzy.com for more information.
+ *
+ * @category    Community
+ * @package     Clearandfizzy_Reducedcheckout
+ * @copyright   Copyright (c) 2013 Clearandfizzy Ltd. (http://www.clearandfizzy.com)
+ * @license     http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons (CC BY-ND 3.0) 
+ * @author		Gareth Price <gareth@clearandfizzy.com>
+ * 
+ */
 class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Observer {
 
+	/**
+	 * Use Layout Handles to apply logic.
+	 * 
+	 * @see etc/config.xml <events>
+	 * @todo we need to break this out into further methods to improve maintainability
+	 * @param Varien_Event_Observer $observer
+	 */
 	public function checkReducedCheckout(Varien_Event_Observer $observer) {
 
 		$enabled = Mage::getStoreConfig('clearandfizzy_reducedcheckout_settings/reducedcheckout/isenabled');
@@ -43,23 +79,36 @@ class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Obser
 				$update->addHandle('clearandfizzy_checkout_reduced_skip_paymentmethod');
 			} // end
 
+			if (Mage::helper('clearandfizzy_reducedcheckout/data')->hideTelephoneAndFax() == true) {
+				$update = $observer->getEvent()->getLayout()->getUpdate();
+				$update->addHandle('clearandfizzy_checkout_reduced_hide_telephonefax');
+			} // end
+			
 		} // end
-		
 		
 		//checkout_onepage_success
 		if ( array_search('checkout_onepage_success', $handles) == true ) {
-			
-			$update = $observer->getEvent()->getLayout()->getUpdate();
-			$update->addHandle('clearandfizzy_checkout_reduced');
-
+				
 			// enable register on order success..
 			// only change the handle 
 			if ( $this->_isValidGuest() && Mage::helper('clearandfizzy_reducedcheckout/data')->guestsCanRegisterOnOrderSuccess() == true) {
+				$update = $observer->getEvent()->getLayout()->getUpdate();
 				$update->addHandle('clearandfizzy_checkout_reduced_success_register');
 			} // end
 			
 		} // end if					
-
+		
+		
+		// hide the telphone input fields
+		if ( array_search('customer_address_form', $handles) == true ) {
+			
+			if (Mage::helper('clearandfizzy_reducedcheckout/data')->hideTelephoneAndFax() == true) {
+				$update = $observer->getEvent()->getLayout()->getUpdate();
+				$update->addHandle('clearandfizzy_checkout_reduced_hide_telephonefax');
+			} // end 
+			
+		} // end if
+				
 		return;
 
 	} // end
@@ -94,8 +143,7 @@ class Clearandfizzy_Reducedcheckout_Model_Observer extends Mage_Core_Model_Obser
 		
 		return false;
 		
-	}
-	
+	} // end 
 
 } // end
 

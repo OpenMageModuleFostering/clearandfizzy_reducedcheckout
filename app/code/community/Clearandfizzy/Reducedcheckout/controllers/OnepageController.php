@@ -1,4 +1,34 @@
 <?php
+/**
+ * Clearandfizzy
+ *
+ * NOTICE OF LICENSE
+ *
+ *
+ * THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE
+ * COMMONS PUBLIC LICENSE ("CCPL" OR "LICENSE"). THE WORK IS PROTECTED BY
+ * COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS
+ * AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED.
+
+ * BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE
+ * TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE MAY
+ * BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+ * CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND
+ * CONDITIONS.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * versions in the future. If you wish to customize this extension for your
+ * needs please refer to http://www.clearandfizzy.com for more information.
+ *
+ * @category    Community
+ * @package     Clearandfizzy_Reducedcheckout
+ * @copyright   Copyright (c) 2013 Clearandfizzy Ltd. (http://www.clearandfizzy.com)
+ * @license     http://creativecommons.org/licenses/by-nd/3.0/ Creative Commons (CC BY-ND 3.0) 
+ * @author		Gareth Price <gareth@clearandfizzy.com>
+ * 
+ */
 require_once "Mage/Checkout/controllers/OnepageController.php";
 class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_OnepageController
 {
@@ -6,13 +36,18 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 	protected $_helper;
 
 
+	/**
+	 * (non-PHPdoc)
+	 * @see Mage_Core_Controller_Varien_Action::_construct()
+	 */
 	public function _construct() {
 		parent::_construct();
 		$this->_helper = Mage::helper('clearandfizzy_reducedcheckout');
 	} // end
 
 	/**
-	 * Save checkout method - set to guest method
+	 * (non-PHPdoc)
+	 * @see Mage_Checkout_OnepageController::saveMethodAction()
 	 */
 	public function saveMethodAction()
 	{
@@ -20,7 +55,7 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 			return;
 		} // end if
 
-
+		// set the checkout method
 		if ($this->getRequest()->isPost()) {
 			$method = $this->getCheckoutMethod();
 			$result = $this->getOnepage()->saveCheckoutMethod($method);
@@ -29,6 +64,12 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 	} // end if
 
 
+	/**
+	 * Checks the System > Configuration Setting for this extension and sets the 
+	 * CheckoutMethod as appropriate
+	 * 
+	 * @return Ambigous <mixed, unknown>
+	 */
 	private function getCheckoutMethod() {
 
 		switch ( $this->_helper->isLoginStepGuestOnly() ) {
@@ -49,11 +90,9 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 
 	/**
-	 *
-	 * $gotonext = false forces the method not to go to the next section and returning to the calling method
-	 *
 	 * (non-PHPdoc)
 	 * @see Mage_Checkout_OnepageController::saveShippingMethodAction()
+	 * $gotonext = false forces the method not to go to the next section and return to the calling method
 	 */
 	public function saveShippingMethodAction($gotonext = true ) {
 
@@ -126,7 +165,10 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 	} // end
 
-
+	/**
+	 * (non-PHPdoc)
+	 * @see Mage_Checkout_OnepageController::saveShippingAction()
+	 */
 	public function saveShippingAction($gotonext = true) {
 
 		if ($this->_expireAjax()) {
@@ -140,9 +182,7 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 			// save the billing address info
 			$result = $this->getOnepage()->saveShipping($data, $customerAddressId);
-
-
-		}
+		} // end 
 
 		// attempt to load the next section
 		if ( $gotonext == true ) {
@@ -150,12 +190,11 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 			$this->getResponse()->setBody(Mage::helper('core')->jsonEncode($result));
 		} // end if
 
-
-
 	} // end
 
 	/**
-	 * save checkout billing address
+	 * (non-PHPdoc)
+	 * @see Mage_Checkout_OnepageController::saveBillingAction()
 	 */
 	public function saveBillingAction()
 	{
@@ -227,6 +266,10 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 	} // end
 
+	/**
+	 * (non-PHPdoc)
+	 * @see Mage_Checkout_OnepageController::progressAction()
+	 */
 	public function progressAction()
 	{
 		$layout = $this->getLayout();
@@ -238,11 +281,12 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 		$this->renderLayout();
 	}
 
-
 	/**
-	 *
-	 * @param unknown $current_step
-	 * @return string
+	 * Returns html for the next step to display depending on logic set in the System > Configuration
+	 * 
+	 * @param array $result
+	 * @param string $current Current step code
+	 * @return multitype:string html <string, unknown>
 	 */
 	private function getNextSection($result, $current) {
 
@@ -328,4 +372,3 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 
 } // end class
-

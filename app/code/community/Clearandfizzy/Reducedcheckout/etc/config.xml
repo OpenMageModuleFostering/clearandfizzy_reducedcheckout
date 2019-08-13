@@ -23,7 +23,7 @@
              
              <shipping_resource>
              	<rewrite>
-             		<carrier_tablerate>Clearandfizzy_ReducedCheckout_Model_Resource_Carrier_TablerateFix</carrier_tablerate>
+             		<carrier_tablerate>Clearandfizzy_Reducedcheckout_Model_Resource_Carrier_TablerateFix</carrier_tablerate>
              	</rewrite>
              </shipping_resource>
              
@@ -105,17 +105,14 @@
 				<loginstep_type>0</loginstep_type>		
 				<default_shipping>noskip</default_shipping>		
 				<default_payment>noskip</default_payment>
-				
+				<hide_telephone_fax>0</hide_telephone_fax>
+				<register_on_order_success>0</register_on_order_success>
+				<register_on_order_success_cms_block>reducedcheckout_success_form_register</register_on_order_success_cms_block>
 			</reducedcheckout>
 			
 			<reducedcheckout_customergroups>
 				<customergroups_enabled>0</customergroups_enabled>
 			</reducedcheckout_customergroups>			
-
-			<reducedcheckout_order_success>
-				<register_on_order_success>0</register_on_order_success>
-				<register_on_order_success_cms_block>reducedcheckout_success_form_register</register_on_order_success_cms_block>
-			</reducedcheckout_order_success>
 
 		</clearandfizzy_reducedcheckout_settings>
 	</default>
