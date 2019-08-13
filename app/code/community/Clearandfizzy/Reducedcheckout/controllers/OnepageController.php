@@ -314,7 +314,6 @@ class Clearandfizzy_Reducedcheckout_OnepageController extends Mage_Checkout_Onep
 
 			case "payment":
 				$result['goto_section'] = 'review';
-				$result['allow_sections'] = array('review');
 				$result['update_section'] = array(
 						'name' => 'review',
 						'html' => $this->_getReviewHtml()

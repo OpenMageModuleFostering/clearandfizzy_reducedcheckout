@@ -6,6 +6,15 @@
 	<input type="hidden" name="suite_ms_payment_method" id="suite_ms_payment_method" value="<?php echo Mage::helper('clearandfizzy_reducedcheckout')->getPaymentMethod(); ?>" />
 <?php /* -- END SAGEPAY INTEGRATION -- */ ?>
 
+
+<!-- REQUIRED -->
+<form action="" id="co-payment-form">
+    <fieldset>
+		<input name="payment[method]" type="hidden" value="<?php echo Mage::helper('clearandfizzy_reducedcheckout')->getPaymentMethod(); ?>" checked="checked" />
+		<span id="payment-buttons-container"></span>
+    </fieldset>
+</form>
+
 <script type="text/javascript">
 //<![CDATA[
     var checkout = new Checkout(accordion,{
