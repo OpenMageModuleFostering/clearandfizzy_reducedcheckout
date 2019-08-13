@@ -71,12 +71,18 @@
 
 	<default>
 		<clearandfizzy_reducedcheckout_settings>
+
 			<reducedcheckout>
-				<isenabled>1</isenabled>		
-				<guestcheckoutonly>1</guestcheckoutonly>		
+				<isenabled>0</isenabled>		
+				<guestcheckoutonly>0</guestcheckoutonly>		
 				<default_shipping>noskip</default_shipping>		
 				<default_payment>noskip</default_payment>		
 			</reducedcheckout>
+			
+			<reducedcheckout_customergroups>
+				<customergroups_enabled>0</customergroups_enabled>
+			</reducedcheckout_customergroups>			
+
 		</clearandfizzy_reducedcheckout_settings>
 	</default>
  

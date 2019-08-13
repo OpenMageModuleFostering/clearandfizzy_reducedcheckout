@@ -49,10 +49,13 @@
 						<show_in_website>1</show_in_website>
 						<show_in_store>1</show_in_store>
 						<comment><![CDATA[ <ol>
+							<li><h3>About</h3></li>
 							<li>Quick checkout method without changing the Magento checkout workflow </li>
 							<li>Allows forced Guest Registration.</li>
 							<li>Allows forced Payment method.</li>
 							<li>Allows forced Shipping method.</li>
+							<li>Allows you to setup rules based on Customer groups.</li>
+							<li><a target="_blank" href="http://www.magentocommerce.com/magento-connect/clearandfizzy-reduced-one-step-checkout-6893.html">http://www.magentocommerce.com/magento-connect/clearandfizzy-reduced-one-step-checkout-6893.html</a>
 						</ol> ]]></comment>				
 						<expanded>1</expanded>							
 					</reducedcheckout_about>
@@ -114,8 +117,59 @@
 					        </default_payment>				        
 				        
 				    </fields>    
+				</reducedcheckout>
 	
-	 				</reducedcheckout>
+				<reducedcheckout_customergroups>
+					<label>Reduced Checkout Customer Group Settings </label>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>   
+					<expanded>1</expanded>
+					<comment><![CDATA[ <ol>
+						<li><h3>Customer Groups Rules</h3></li>
+						<li>For most users its advisable to disable forced guest checkout.</li>
+						<li>When enabled the customer groups selected will be forced to show thier respective steps.</li>
+					</ol> ]]></comment>		
+	
+					<fields>
+				        <customergroups_enabled>
+							<label>Enabled Customer Groups</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>    				        
+				            <sort_order>1</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </customergroups_enabled>
+
+				        <shipping_noskip_customergroups>
+							<label>Do not skip Shipping Method for Customer Groups</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>adminhtml/system_config_source_customer_group</source_model>    				        
+				            <comment></comment>
+				            <depends><customergroups_enabled>1</customergroups_enabled></depends>
+				            <sort_order>20</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </shipping_noskip_customergroups>
+
+				        <payment_noskip_customergroups>
+							<label>Do not skip Payment Method for Customer Groups</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>adminhtml/system_config_source_customer_group</source_model>    				        
+				            <comment></comment>
+				            <depends><customergroups_enabled>1</customergroups_enabled></depends>
+				            <sort_order>30</sort_order>
+				            <show_in_default>1</show_in_default>
+				            <show_in_website>1</show_in_website>
+				            <show_in_store>1</show_in_store>                    
+				        </payment_noskip_customergroups>
+					</fields>
+
+				</reducedcheckout_customergroups>
+
 	        </groups>                            
  
         </clearandfizzy_reducedcheckout_settings>
