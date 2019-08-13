@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
     <name>Clearandfizzy_Reducedcheckout</name>
-    <version>1.3.0</version>
+    <version>1.3.1</version>
     <stability>stable</stability>
     <license uri="http://opensource.org/licenses/afl-3.0.php">AFL 3.0</license>
     <channel>community</channel>
@@ -14,14 +14,15 @@ Integration with 3rd-party payment and shipping extensions should be easy as thi
 Yes&lt;br /&gt;&#xD;
 &lt;br /&gt;&#xD;
 Did you fix a bunch of Bugs?&lt;br /&gt;&#xD;
-No&lt;br /&gt;&#xD;
+Yes&lt;br /&gt;&#xD;
 &lt;br /&gt;&#xD;
 Well then, what in funkytown did you do?&lt;br /&gt;&#xD;
-Added the ability to skip checkout steps based on Customer Groups.</notes>
+Added the ability to skip checkout steps based on Customer Groups.&lt;br /&gt;&#xD;
+Fixed a bug inthe Force Guest Checkout mode being ignored.</notes>
     <authors><author><name>Gareth Price</name><user>clearandfizzy</user><email>gareth@clearandfizzy.com</email></author></authors>
-    <date>2013-02-24</date>
-    <time>21:03:56</time>
-    <contents><target name="magecommunity"><dir name="Clearandfizzy"><dir name="Reducedcheckout"><dir name="Helper"><file name="Data.php" hash="ba32d1914690cba78aa1f88c3ce63c3f"/></dir><dir name="Model"><file name="Observer.php" hash="8f4498205db5d37752b3f795816517b4"/><dir name="System"><dir name="Config"><dir name="Source"><dir name="Payment"><file name="EnabledMethods.php" hash="f6b69e6fc6697870c53c6c86dbd68e98"/></dir><dir name="Shipping"><file name="EnabledMethods.php" hash="5cf16d02a105f9699e4258bb5bc57364"/></dir></dir></dir></dir></dir><dir name="controllers"><file name="OnepageController.php" hash="8d8d7ee733035d27a202cbd277041267"/></dir><dir name="etc"><file name="adminhtml.xml" hash="0bb1372118e88ad09fbd1b1d5113dea7"/><file name="config.xml" hash="d6f318cedca281655d55e0813c8282a4"/><file name="system.xml" hash="4b2819dbe5db301e2067a2331ad1c145"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Clearandfizzy_ReducedCheckout.xml" hash="9cb58e8121e0c0e294f10a3595b2be7d"/></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="reducedcheckout.xml" hash="282aeb07fe3b9510bcbd92498907968f"/></dir></dir></dir><dir name="template"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="onepage.phtml" hash="21921ab772ef02af217c49200619f2d5"/></dir></dir></dir></dir></dir></dir></dir></target></contents>
+    <date>2013-02-25</date>
+    <time>01:31:13</time>
+    <contents><target name="magecommunity"><dir name="Clearandfizzy"><dir name="Reducedcheckout"><dir name="Helper"><file name="Data.php" hash="eb38b72cf9e7d141b0ae12ceaba82ccf"/></dir><dir name="Model"><file name="Observer.php" hash="8f4498205db5d37752b3f795816517b4"/><dir name="System"><dir name="Config"><dir name="Source"><dir name="Payment"><file name="EnabledMethods.php" hash="f6b69e6fc6697870c53c6c86dbd68e98"/></dir><dir name="Shipping"><file name="EnabledMethods.php" hash="5cf16d02a105f9699e4258bb5bc57364"/></dir></dir></dir></dir></dir><dir name="controllers"><file name="OnepageController.php" hash="8d8d7ee733035d27a202cbd277041267"/></dir><dir name="etc"><file name="adminhtml.xml" hash="0bb1372118e88ad09fbd1b1d5113dea7"/><file name="config.xml" hash="d6f318cedca281655d55e0813c8282a4"/><file name="system.xml" hash="4b2819dbe5db301e2067a2331ad1c145"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Clearandfizzy_ReducedCheckout.xml" hash="9cb58e8121e0c0e294f10a3595b2be7d"/></dir></target><target name="magedesign"><dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="reducedcheckout.xml" hash="282aeb07fe3b9510bcbd92498907968f"/></dir></dir></dir><dir name="template"><dir name="clearandfizzy"><dir name="reducedcheckout"><file name="onepage.phtml" hash="21921ab772ef02af217c49200619f2d5"/></dir></dir></dir></dir></dir></dir></dir></target></contents>
     <compatible/>
     <dependencies><required><php><min>5.2.0</min><max>6.0.0</max></php></required></dependencies>
 </package>
