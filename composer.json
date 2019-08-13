@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Clearandfizzy_Reducedcheckout",
+    "type": "magento-module",
+    "license": "Clearandfizzy-Licence",
+    "homepage": "",
+    "description": "Reduce the checkout process by force shipping & payment methods, adds "register" form to order success page.",
+    "authors": [
+    {
+        "name": "Gareth Price",
+        "email": "gareth@clearandfizzy.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
