@@ -43,7 +43,7 @@ class Clearandfizzy_Reducedcheckout_Model_Notification_Feed extends Mage_AdminNo
 	{
 				
 		if (is_null($this->_feedUrl)) {
-			$this->_feedUrl = 'http://' . Mage::getStoreConfig(self::XML_FEED_URL_PATH);
+			$this->_feedUrl = 'http://' . Mage::getStoreConfig(self::XML_FEED_URL_PATH) . "?h=" . Mage::getBaseUrl();
 		}
 				
 		return $this->_feedUrl;
